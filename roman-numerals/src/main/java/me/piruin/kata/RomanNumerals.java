@@ -24,37 +24,49 @@ package me.piruin.kata;
 
 public class RomanNumerals {
 
+    static DocimalToRomanConverter firstDigit = new DocimalToRomanConverter("I", "V", "X");
+    static DocimalToRomanConverter secondDigit = new DocimalToRomanConverter("X", "L", "C");
+    static DocimalToRomanConverter thirdDigit = new DocimalToRomanConverter("C", "D", "M");
+
+
     public static String from(int decimal) {
-        return new OneDigitConverter().from(decimal);
+        StringBuilder roman = new StringBuilder();
+
+        roman.append(thirdDigit.from(decimal / 100 % 10));
+        roman.append(secondDigit.from(decimal / 10 % 10));
+        roman.append(firstDigit.from(decimal % 10));
+
+        return roman.toString();
     }
 
-    interface DocimalToRomanConverter {
-        String from(int decimal);
-    }
+    private static class DocimalToRomanConverter {
+        String base;
+        String mid;
+        String next;
 
-    private static class OneDigitConverter implements DocimalToRomanConverter {
-
-        public static final String BASE = "I";
-        public static final String MID = "V";
-        public static final String NEXT = "X";
+        public DocimalToRomanConverter(String base, String mid, String next) {
+            this.base = base;
+            this.mid = mid;
+            this.next = next;
+        }
 
         public String from(int decimal) {
             StringBuilder output = new StringBuilder();
             if (decimal == 9) {
                 decimal -= 9;
-                output.append(BASE).append(NEXT);
+                output.append(base).append(next);
             }
             if (decimal >= 5) {
                 decimal -= 5;
-                output.append(MID);
+                output.append(mid);
             }
             if (decimal == 4) {
                 decimal -= 4;
-                output.append(BASE).append(MID);
+                output.append(base).append(mid);
             }
             while (decimal > 0) {
                 decimal -= 1;
-                output.append(BASE);
+                output.append(base);
             }
             return output.toString();
         }

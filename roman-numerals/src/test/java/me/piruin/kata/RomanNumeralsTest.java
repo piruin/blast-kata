@@ -22,44 +22,33 @@
 
 package me.piruin.kata;
 
-import java.util.Arrays;
-import java.util.Collection;
-import org.junit.Assert;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameter;
-import org.junit.runners.Parameterized.Parameters;
 
-@RunWith(Parameterized.class)
-public class RomanNumeralsFromDecimalTest {
+import static org.junit.Assert.assertEquals;
 
-    @Parameter
-    public int decimal;
-    @Parameter(1)
-    public String roman;
+public class RomanNumeralsTest {
 
-    @Parameters(name = "{0} -> {1}")
-    public static Collection<Object[]> data() {
-        return Arrays.asList(new Object[][] {
-                {1, "I"},
-                {2, "II"},
-                {4, "IV"},
-                {5, "V"},
-                {8, "VIII"},
-                {9, "IX"},
-                {10, "X"},
-                {25, "XXV"},
-                {87, "LXXXVII"},
-                {99, "XCIX"},
-                {100, "C"},
-                {400, "CD"},
-                {609, "DCIX"}
-        });
+    @Test
+    public void getFirstDigit() throws Exception {
+        assertEquals(1, 1 % 10);
+        assertEquals(1, 21 % 10);
+        assertEquals(1, 221 % 10);
+        assertEquals(1, 4221 % 10);
     }
 
     @Test
-    public void test() throws Exception {
-        Assert.assertEquals(roman, RomanNumerals.from(decimal));
+    public void getSecondDigit() throws Exception {
+        assertEquals(0, 1 / 10 % 10);
+        assertEquals(2, 21 / 10 % 10);
+        assertEquals(2, 221 / 10 % 10);
+        assertEquals(2, 4221 / 10 % 10);
+    }
+
+    @Test
+    public void getThridDigit() throws Exception {
+        assertEquals(0, 1 / 100 % 10);
+        assertEquals(0, 21 / 100 % 10);
+        assertEquals(2, 221 / 100 % 10);
+        assertEquals(2, 4221 / 100 % 10);
     }
 }
