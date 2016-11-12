@@ -24,15 +24,24 @@ package me.piruin.kata;
 
 public class RomanNumerals {
 
+    public static final int MAX_INPUT = 10000;
+
     private static DecimalToRoman FIRST = new DecimalToRoman("I", "V", "X");
     private static DecimalToRoman SECOND = new DecimalToRoman("X", "L", "C");
     private static DecimalToRoman THIRD = new DecimalToRoman("C", "D", "M");
-    private static DecimalToRoman FORTH = new DecimalToRoman("M", "M", "M");
+    private static DecimalToRoman FORTH = new DecimalToRoman("M", "𐆗", "𐆖");
 
 
     public static String from(int decimal) {
-        if (decimal >= 4000)
-            throw new IllegalArgumentException("Input exceed limit. should in range [1-3999]");
+        if (decimal > 10000) {
+            throw new IllegalArgumentException("Input exceed limit. should in range [1-10000]");
+        }
+        if (decimal < 1) {
+            throw new IllegalArgumentException("Input must be positive value");
+        }
+        if (decimal == 10000) {
+            return "𐆖";
+        }
 
         StringBuilder roman = new StringBuilder();
         roman.append(FORTH.from(decimal / 1000 % 10));
@@ -42,7 +51,7 @@ public class RomanNumerals {
         return roman.toString();
     }
 
-    private static class DecimalToRoman {
+    public static class DecimalToRoman {
         String base;
         String mid;
         String next;

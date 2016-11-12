@@ -22,43 +22,13 @@
 
 package me.piruin.kata;
 
+import me.piruin.kata.RomanNumerals.DecimalToRoman;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-
-public class RomanNumeralsTest {
-
-    @Test
-    public void getFirstDigit() throws Exception {
-        assertEquals(1, 1 % 10);
-        assertEquals(1, 21 % 10);
-        assertEquals(1, 221 % 10);
-        assertEquals(1, 4221 % 10);
-    }
-
-    @Test
-    public void getSecondDigit() throws Exception {
-        assertEquals(0, 1 / 10 % 10);
-        assertEquals(2, 21 / 10 % 10);
-        assertEquals(2, 221 / 10 % 10);
-        assertEquals(2, 4221 / 10 % 10);
-    }
-
-    @Test
-    public void getThridDigit() throws Exception {
-        assertEquals(0, 1 / 100 % 10);
-        assertEquals(0, 21 / 100 % 10);
-        assertEquals(2, 221 / 100 % 10);
-        assertEquals(2, 4221 / 100 % 10);
-    }
+public class DecimalToRomanTest {
 
     @Test(expected = IllegalArgumentException.class)
-    public void exceedLimit() throws Exception {
-        RomanNumerals.from(RomanNumerals.MAX_INPUT + 1);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void nonPrositiveNumber() throws Exception {
-        RomanNumerals.from(0);
+    public void range() throws Exception {
+        new DecimalToRoman("I", "V", "X").from(10);
     }
 }

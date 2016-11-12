@@ -58,7 +58,10 @@ public class RomanNumeralsFromDecimalTest {
                 {1000, "M"},
                 {2008, "MMVIII"},
                 {1990, "MCMXC"},
-                {3999, "MMMCMXCIX"}
+                {3999, "MMMCMXCIX"},
+                {5000, "𐆗"},
+                {9000, "M𐆖"},
+                {10000, "𐆖"}
         });
     }
 
