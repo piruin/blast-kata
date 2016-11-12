@@ -22,13 +22,41 @@
 
 package me.piruin.kata;
 
-import org.junit.Assert;
-import org.junit.Test;
+public class RomanNumerals {
 
-public class RomanNumericsTest {
+    public static String from(int decimal) {
+        return new OneDigitConverter().from(decimal);
+    }
 
-    @Test
-    public void Ifrom1() throws Exception {
-        Assert.assertEquals("I", RomanNumerics.from(1));
+    interface DocimalToRomanConverter {
+        String from(int decimal);
+    }
+
+    private static class OneDigitConverter implements DocimalToRomanConverter {
+
+        public static final String BASE = "I";
+        public static final String MID = "V";
+        public static final String NEXT = "X";
+
+        public String from(int decimal) {
+            StringBuilder output = new StringBuilder();
+            if (decimal == 9) {
+                decimal -= 9;
+                output.append(BASE).append(NEXT);
+            }
+            if (decimal >= 5) {
+                decimal -= 5;
+                output.append(MID);
+            }
+            if (decimal == 4) {
+                decimal -= 4;
+                output.append(BASE).append(MID);
+            }
+            while (decimal > 0) {
+                decimal -= 1;
+                output.append(BASE);
+            }
+            return output.toString();
+        }
     }
 }
