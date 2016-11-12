@@ -1,5 +1,7 @@
 # Blast Kata
 
+[![Build Status](https://travis-ci.org/piruin/blast-kata.svg?branch=master)](https://travis-ci.org/piruin/blast-kata)
+
 Repository for my kata practices to improve my skill as software developer.
 
 ## Reference
