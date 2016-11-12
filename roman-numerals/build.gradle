@@ -27,7 +27,6 @@ apply plugin: 'java'
 
 sourceCompatibility = javaVersion
 
-
 dependencies {
     testCompile "junit:junit:$junitVersion"
 }

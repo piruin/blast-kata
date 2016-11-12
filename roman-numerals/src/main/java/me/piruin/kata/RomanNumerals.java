@@ -24,33 +24,40 @@ package me.piruin.kata;
 
 public class RomanNumerals {
 
-    static DocimalToRomanConverter firstDigit = new DocimalToRomanConverter("I", "V", "X");
-    static DocimalToRomanConverter secondDigit = new DocimalToRomanConverter("X", "L", "C");
-    static DocimalToRomanConverter thirdDigit = new DocimalToRomanConverter("C", "D", "M");
+    private static DecimalToRoman FIRST = new DecimalToRoman("I", "V", "X");
+    private static DecimalToRoman SECOND = new DecimalToRoman("X", "L", "C");
+    private static DecimalToRoman THIRD = new DecimalToRoman("C", "D", "M");
+    private static DecimalToRoman FORTH = new DecimalToRoman("M", "M", "M");
 
 
     public static String from(int decimal) {
+        if (decimal >= 4000)
+            throw new IllegalArgumentException("Input exceed limit. should in range [1-3999]");
+
         StringBuilder roman = new StringBuilder();
-
-        roman.append(thirdDigit.from(decimal / 100 % 10));
-        roman.append(secondDigit.from(decimal / 10 % 10));
-        roman.append(firstDigit.from(decimal % 10));
-
+        roman.append(FORTH.from(decimal / 1000 % 10));
+        roman.append(THIRD.from(decimal / 100 % 10));
+        roman.append(SECOND.from(decimal / 10 % 10));
+        roman.append(FIRST.from(decimal % 10));
         return roman.toString();
     }
 
-    private static class DocimalToRomanConverter {
+    private static class DecimalToRoman {
         String base;
         String mid;
         String next;
 
-        public DocimalToRomanConverter(String base, String mid, String next) {
+        public DecimalToRoman(String base, String mid, String next) {
             this.base = base;
             this.mid = mid;
             this.next = next;
         }
 
         public String from(int decimal) {
+            if (decimal >= 10) {
+                throw new IllegalArgumentException("Input mist be 0-9");
+            }
+
             StringBuilder output = new StringBuilder();
             if (decimal == 9) {
                 decimal -= 9;

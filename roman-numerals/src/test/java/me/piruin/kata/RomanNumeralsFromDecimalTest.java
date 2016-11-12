@@ -54,7 +54,11 @@ public class RomanNumeralsFromDecimalTest {
                 {99, "XCIX"},
                 {100, "C"},
                 {400, "CD"},
-                {609, "DCIX"}
+                {609, "DCIX"},
+                {1000, "M"},
+                {2008, "MMVIII"},
+                {1990, "MCMXC"},
+                {3999, "MMMCMXCIX"}
         });
     }
 
