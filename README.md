@@ -1,6 +1,6 @@
 # Blast Kata
-
 [![Build Status](https://travis-ci.org/piruin/blast-kata.svg?branch=master)](https://travis-ci.org/piruin/blast-kata)
+[![Coverage Status](https://coveralls.io/repos/github/piruin/blast-kata/badge.svg?branch=master)](https://coveralls.io/github/piruin/blast-kata?branch=master)
 
 Repository for my kata practices to improve my skill as software developer.
 
