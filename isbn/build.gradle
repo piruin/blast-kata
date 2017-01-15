@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016 Piruin Panichphol
+ * Copyright (c) 2017 Piruin Panichphol
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -19,8 +19,22 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
  * OR OTHER DEALINGS IN THE SOFTWARE.
  */
+plugins {
+  id 'scala'
+}
 
-rootProject.name = 'Blast-Kata'
-include 'roman-numerals'
-include 'isbn'
+version '1.0-SNAPSHOT'
 
+/*
+ * snippet block below for prevent bug of IDEA with gradle scala plugin
+ * https://discuss.gradle.org/t/idea-integration-with-scala-plugin-broken-since-gradle-3-0-no-such-property-daemonserver/19159
+ */
+ScalaCompileOptions.metaClass.daemonServer = true
+ScalaCompileOptions.metaClass.fork = true
+ScalaCompileOptions.metaClass.useAnt = false
+ScalaCompileOptions.metaClass.useCompileDaemon = false
+
+dependencies {
+  compile "org.scala-lang:scala-library:$scalaVersion"
+  testCompile "junit:junit:$junitVersion"
+}

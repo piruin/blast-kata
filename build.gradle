@@ -19,6 +19,7 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
  * OR OTHER DEALINGS IN THE SOFTWARE.
  */
+group 'me.piruin'
 
 allprojects {
     repositories {
@@ -28,9 +29,10 @@ allprojects {
 
 ext {
     javaVersion = JavaVersion.VERSION_1_8
-    junitVersion = 4.12
+    scalaVersion = '2.12.1'
+    junitVersion = '4.12'
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '3.1'
+    gradleVersion = '3.3'
 }
